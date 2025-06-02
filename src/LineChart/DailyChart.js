@@ -26,12 +26,19 @@ export default function DailyChart() {
     fetchData();
   }, []);
 
+  // Calcular el rango del día completo
+  const today = new Date();
+  const minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0, 0);
+  const maxDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59, 999);
+
   return (
     <LineChart
       xAxis={[
-        { 
-          data: xData, 
+        {
+          data: xData,
           scaleType: 'time',
+          min: minDate,
+          max: maxDate,
           valueFormatter: (date) => date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }
       ]}

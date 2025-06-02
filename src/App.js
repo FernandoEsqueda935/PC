@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <main>
         {view === 'dashboard' && <MainDashboard />}
-        {view === 'linechart' && <DailyChart />}
+        {view === 'linechart' && <DailyChart/>}
         {view === 'form' && <RegistrarDisForm setView = {setView}/>}
         {view === 'card' && <RegistrarDisCard setView = {setView} />}
       </main>
