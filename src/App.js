@@ -10,7 +10,14 @@ import DailyChart from './LineChart/DailyChart';
 
 
 function App() {
-  const [view, setView] = useState("linechart");
+  const [view, setView] = useState("card");
+  const [d_id, setD_id] = useState(null);
+  useEffect(() => {
+    const storedView = localStorage.getItem('view');
+    if (storedView) {
+      setView(storedView);
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('view', view);
@@ -18,14 +25,14 @@ function App() {
 
   return (
     <div className="App">
-      <main>
+      <main className='main'>
         {view === 'dashboard' && <MainDashboard />}
         {view === 'linechart' && <DailyChart/>}
-        {view === 'form' && <RegistrarDisForm setView = {setView}/>}
-        {view === 'card' && <RegistrarDisCard setView = {setView} />}
+        {view === 'form' && <RegistrarDisForm setView = {setView} d_id = {d_id}  />}
+        {view === 'card' && <RegistrarDisCard setView = {setView} setD_id = {setD_id} />}
       </main>
       <footer className="App-footer">
-        <p>&copy; 2023 Registrar Dashboard</p>
+        <p>Proyecto de carrera</p>
       </footer>
     </div>
   );

@@ -26,7 +26,6 @@ export default function DailyChart() {
     fetchData();
   }, []);
 
-  // Calcular el rango del día completo
   const today = new Date();
   const minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0, 0);
   const maxDate = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59, 999);
@@ -49,7 +48,7 @@ export default function DailyChart() {
         },
       ]}
         height={400}
-        width={1000}
+        width={800}
     />
   );
 }

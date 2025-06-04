@@ -3,9 +3,9 @@ import axios from 'axios';
 import { Button, Form, Input } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 
-const rootDir = "http://localhost:3000/api";
+const URL = "http://localhost:3001/dispositivos/sin-registrar/";
 
-const RegistrarDisForm = ( { setView }) => {
+const RegistrarDisForm = ( { setView, d_id }) => {
     
   const handleBack = () => {
       setView("card")
@@ -14,11 +14,13 @@ const RegistrarDisForm = ( { setView }) => {
     const handleOnFinish = async (values) => {
         try {
           console.log('Received values:', values);
-          const response = await axios.post(rootDir + '/dispositivos', values);
+          const response = await axios.put(URL + d_id, values);
           console.log('Response:', response.data);
         } catch (error) {
           console.error('Error al registrar el dispositivo:', error);
         }
+
+        setView("linechart");
       };
   return (
     <div style={{ borderRadius: '10px' ,flexDirection: "column",display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#f0f2f5', padding: '20px' }}>
