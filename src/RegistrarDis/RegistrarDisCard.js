@@ -28,7 +28,7 @@ const DisCard = ({ setView, setD_id }) => {
 
   const handleClick = (d_id) => {
   setD_id(d_id);
-  setView("form");
+  setView("DisForm");
 };
 
 return (
@@ -37,7 +37,7 @@ return (
       <Card
         key={dispositivo.d_id}
         hoverable
-        style={{ width: 240 }}
+        style={{ maxWidth: 240, padding: 16 }}
         cover={
           <img
             alt="dispositivo"

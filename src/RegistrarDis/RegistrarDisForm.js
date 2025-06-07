@@ -8,7 +8,7 @@ const URL = "http://localhost:3001/dispositivos/sin-registrar/";
 const RegistrarDisForm = ( { setView, d_id }) => {
     
   const handleBack = () => {
-      setView("card")
+      setView("DisCard")
     };
 
     const handleOnFinish = async (values) => {
@@ -20,7 +20,7 @@ const RegistrarDisForm = ( { setView, d_id }) => {
           console.error('Error al registrar el dispositivo:', error);
         }
 
-        setView("linechart");
+        setView("SenForm");
       };
   return (
     <div style={{ borderRadius: '10px' ,flexDirection: "column",display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#f0f2f5', padding: '20px' }}>
