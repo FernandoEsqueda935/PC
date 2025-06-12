@@ -17,7 +17,7 @@ const RegistrarSenForm = ({ setView, d_id }) => {
   const [sensor2Active, setSensor2Active] = useState(false);
 
   const handleBack = () => {
-    setView("card");
+    setView("DisCard");
   };
 
   const handleOnFinish = async (values) => {
@@ -29,6 +29,7 @@ const RegistrarSenForm = ({ setView, d_id }) => {
           nombre: values.nombre1,
           lugar: values.lugar1,
           tipo: values.tipo1,
+          slot: 1
         });
       }
       if (sensor2Active) {
@@ -37,6 +38,7 @@ const RegistrarSenForm = ({ setView, d_id }) => {
           nombre: values.nombre2,
           lugar: values.lugar2,
           tipo: values.tipo2,
+          slot: 2
         });
       }
       if (sensores.length === 0) {

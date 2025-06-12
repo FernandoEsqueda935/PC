@@ -1,41 +1,34 @@
-import React from 'react';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer } = Layout;
-const items = Array.from({ length: 6 }).map((_, index) => ({
-  key: index + 1,
-  label: `sensor ${index + 1}`,
-}));
-const MainDashboard = () => {
+
+const items = [
+  { label: "Dashboard", key: 'dashboard' },
+  { label: "Dispositivos", key: 'dispositivos' },
+  { label: "Sensores", key: 'sensores' }
+];
+
+const MainDashboard = ( {children, setPage} ) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout style={{height: '100vh', width: '100vw', display: 'flex'}}>
+    <Layout style={{height: '100vh', width: '100vw', display: 'flex', padding: "0px 0px 0px 0px"}}>
       <Header style={{ display: 'flex', alignItems: 'center' }}>
         <div className="demo-logo" />
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['2']}
+          defaultSelectedKeys={['dashboard']}
           items={items}
           style={{ flex: 1, minWidth: 0 }}
+          onClick={({ key }) => {
+            setPage(key);
+          }}
         />
       </Header>
-      <Content style={{ padding: '24px 24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-        <div
-          style={{
-            background: colorBgContainer,
-            minHeight: 280,
-            padding: 24,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          Consumos.
-        </div>
+      <Content style={{ overflow: 'auto' , padding: '24px 24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+          {children}
       </Content>
-      <Footer style={{ textAlign: 'center' }}>
-          Proyecto de carrera
-      </Footer>
     </Layout>
   );
 };
